@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "ram-disc-create: simple script for create virtual disk from RAM"
+echo "Input mount point:"
+echo -n "/mnt/"
+read mp
+echo -n "Imput size of disk, e.g. 512m: "
+read sz
+mkdir /mnt/$mp
+sudo mount -t tmpfs -o size=$sz tmpfs /mnt/$mp
+echo "Press ENTER for unmount"
+read key
+sudo umount -f /mnt/$mp
+rm -r /mnt/$mp
+echo "UNMOUNT!!!"
